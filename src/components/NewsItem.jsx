@@ -4,7 +4,7 @@ class NewsItem extends Component {
     render() {
         let { urlToImage, title, author, description, newsUrl, publishedAt } = this.props
         return (
-            <div>
+            <div className='container' style={{boxSizing: "border-box", paddingTop: "2rem"}}>
                 <div className="card h-100">
                     <img 
                     style={{width: "20", height:"40%"}}
@@ -12,8 +12,8 @@ class NewsItem extends Component {
                     className="card-img-top" 
                     alt="..." />
                     <div className="card-body">
-                        <h5 className="card-title" style={{fontSize:"17px"}}>{title}</h5>
-                        <p className="card-text">
+                        <h5 className="card-title" style={{fontSize:"20px"}}>{title}</h5>
+                        <p className="card-text" style={{fontSize:"16px", marginTop:"10"}}>
                             <small className='text-muted'>{author}</small>
                             <br />
                             {description}
