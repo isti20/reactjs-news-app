@@ -9,7 +9,7 @@ class NewsItem extends Component {
                     <img 
                     style={{width: "20", height:"40%"}}
                     src={urlToImage} 
-                    class="card-img-top" 
+                    className="card-img-top" 
                     alt="..." />
                     <div className="card-body">
                         <h5 className="card-title" style={{fontSize:"17px"}}>{title}</h5>
