@@ -30,7 +30,7 @@ class News extends Component {
                         urlToImage={element.urlToImage}
                         title={element.title} 
                         author={element.author}
-                        description={element.description}
+                        description={element.description?element.description.slice(0, 100):""}
                         newsUrl={element.url}
                         publishedAt={element.publishedAt}/>
                     </div>
