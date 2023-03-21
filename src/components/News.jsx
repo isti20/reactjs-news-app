@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import NewsItem from './NewsItem';
+import Loading from './assets/loading.gif';
 
 class News extends Component {
     constructor() {
         super();
         this.state = {
             articles: [],
-            loading: false
+            loading: false,
+            navigation: "initial"
         }
     }
 
@@ -16,14 +18,23 @@ class News extends Component {
         let data = await fetch(url);
         let parsedData = await data.json()
         console.log(parsedData);
-        this.setState({ articles: parsedData.articles })
+        this.setState({ navigation: "ready", articles: parsedData.articles})
     }
 
     render() {
+        const { navigation } = this.state
+
+        if (navigation === "initial") {
+            return (
+                <div className="text-center" style={{margin:"4rem"}}>
+                    <img src={Loading} alt="Loading" />
+                </div>
+            )
+        }
         return (
             <div className='container'>
                 <h2>United States News API - Top Headlines</h2>
-                <div className='row'>
+                <div className='row d-flex justify-content-between'>
                     {this.state.articles.map((element) => {
                         return <div className='col-md-4' key={element.url}>
                         <NewsItem 
