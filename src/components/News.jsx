@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import NewsItem from './NewsItem';
 
 class News extends Component {
+    constructor() {
+        super();
+        this.state = {
+            articles: this.articles,
+            loading: false
+        }
+    }
 
     render() {
 
