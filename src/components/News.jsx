@@ -6,23 +6,27 @@ class News extends Component {
     constructor() {
         super();
         this.state = {
+            navigation: "initial",
             articles: [],
-            loading: false,
-            navigation: "initial"
         }
     }
 
     async componentDidMount(){
-        console.log("cdm");
+        console.log("Component DID MOUNT");
         let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=1235311a10564850bd45dd4a2400da4c";
         let data = await fetch(url);
         let parsedData = await data.json()
         console.log(parsedData);
-        this.setState({ navigation: "ready", articles: parsedData.articles})
+        this.setState({
+            navigation: "ready", 
+            articles: parsedData.articles,
+        })
     }
 
+
     render() {
-        const { navigation } = this.state
+        console.log("RENDER")
+        const { navigation } = this.state;
 
         if (navigation === "initial") {
             return (
@@ -30,10 +34,11 @@ class News extends Component {
                     <img src={Loading} alt="Loading" />
                 </div>
             )
-        }
+        };
+
         return (
             <div className='container'>
-                <h2>United States News API - Top Headlines</h2>
+                <h2 style={{paddingTop: "2rem", fontFamily:"sans-serif"}}>United States News API - Top Headlines</h2>
                 <div className='row d-flex justify-content-between'>
                     {this.state.articles.map((element) => {
                         return <div className='col-md-4' key={element.url}>
@@ -50,45 +55,6 @@ class News extends Component {
             </div>
         )
     }
-
-    // render() {
-
-    //     return (
-    //         <div className='container'>
-    //             <h2>Indonesia News - Top Headlines</h2>
-    //             <div className='row'>
-    //                 <div className='col-md-4'>
-    //                     <NewsItem 
-    //                     urlToImage="https://media.cnn.com/api/v1/images/stellar/prod/230320102819-01-xi-jinping-moscow-032023.jpg?c=16x9&q=w_800,c_fill"
-    //                     title="myTitle" 
-    //                     author="Simone McCarthy, Rob Picheta"
-    //                     description="This is description"
-    //                     newsUrl="https://www.cnn.com/2023/03/20/europe/xi-putin-china-russia-visit-monday-intl-hnk/index.html"
-    //                     publishedAt="2023-03-20T22:02:00Z"/>
-    //                 </div>
-    //                 <div className='col-md-4'>
-    //                     <NewsItem 
-    //                     urlToImage="https://media.cnn.com/api/v1/images/stellar/prod/230320102819-01-xi-jinping-moscow-032023.jpg?c=16x9&q=w_800,c_fill"
-    //                     title="myTitle" 
-    //                     author="Simone McCarthy, Rob Picheta"
-    //                     description="This is description"
-    //                     newsUrl="https://www.cnn.com/2023/03/20/europe/xi-putin-china-russia-visit-monday-intl-hnk/index.html"
-    //                     publishedAt="2023-03-20T22:02:00Z"/>
-    //                 </div>
-    //                 <div className='col-md-4'>
-    //                     <NewsItem 
-    //                     urlToImage="https://media.cnn.com/api/v1/images/stellar/prod/230320102819-01-xi-jinping-moscow-032023.jpg?c=16x9&q=w_800,c_fill"
-    //                     title="myTitle" 
-    //                     author="Simone McCarthy, Rob Picheta"
-    //                     description="This is description"
-    //                     newsUrl="https://www.cnn.com/2023/03/20/europe/xi-putin-china-russia-visit-monday-intl-hnk/index.html"
-    //                     publishedAt="2023-03-20T22:02:00Z"/>
-    //                 </div>
-                    
-    //             </div>
-    //         </div>
-    //     )
-    // }
 }
 
 export default News

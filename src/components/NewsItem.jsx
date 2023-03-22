@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class NewsItem extends Component {
     render() {
         let { urlToImage, title, author, description, newsUrl, publishedAt } = this.props
+    
         return (
             <div className='container' style={{boxSizing: "border-box", paddingTop: "2rem"}}>
                 <div className="card h-100">
@@ -30,3 +31,4 @@ class NewsItem extends Component {
 }
 
 export default NewsItem
+
