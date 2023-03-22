@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import NewsItem from './NewsItem';
-import Loading from './assets/loading.gif';
 
 class News extends Component {
     constructor() {
         super();
         this.state = {
-            // navigation: "initial",
             articles: [],
         }
     }
@@ -18,7 +16,6 @@ class News extends Component {
         let parsedData = await data.json()
         console.log(parsedData);
         this.setState({
-            // navigation: "ready", 
             articles: parsedData.articles,
         })
     }
@@ -26,15 +23,6 @@ class News extends Component {
 
     render() {
         console.log("RENDER")
-        // const { navigation } = this.state;
-
-        // if (navigation === "initial") {
-        //     return (
-        //         <div className="text-center" style={{margin:"4rem"}}>
-        //             <img src={Loading} alt="Loading" />
-        //         </div>
-        //     )
-        // };
 
         return (
             <div className='container'>
